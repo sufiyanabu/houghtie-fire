@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Hostelmanagement</string>
+    <string name="spinner_title">Select Hostel</string>
+    <string-array name="HostelType">
+        <item>GH-1</item>
+        <item>GH-2</item>
+        <item>BH-1</item>
+        <item>BH-2</item>
+        <item>BH-3</item>
+        <item>BH-4</item>
+    </string-array>
+    <string-array name="LoginType">
+        <item>Student</item>
+        <item>Caretaker</item>
+        <item>Staff</item>
+    </string-array>
+</resources>
