@@ -14,4 +14,5 @@
         <item>Caretaker</item>
         <item>Staff</item>
     </string-array>
+    <string name="signupUrl">http://localhost/projects/hostel-app-api/register.cgi</string>
 </resources>
