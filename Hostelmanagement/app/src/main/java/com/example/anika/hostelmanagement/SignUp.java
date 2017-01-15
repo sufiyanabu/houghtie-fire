@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -30,10 +33,11 @@ import java.net.URL;
 public class SignUp extends AppCompatActivity {
     Spinner spinner1, spinner2;
     Button signup;
-    EditText uiName,uiEmail,uiPassword,uiRoom,uiMobile;
+    private EditText uiName,uiEmail,uiPassword,uiRoom,uiMobile;
     TextView uiLog;
     ArrayAdapter<CharSequence> adapter1;
     ArrayAdapter<CharSequence> adapter2;
+    
 
 
     private class Httpcaller extends AsyncTask <URL, Void, Boolean>{//class for making async(google for details, in short runs something on a separate thread from main thread to stop slowing down of main thread) http call.
@@ -110,13 +114,35 @@ public class SignUp extends AppCompatActivity {
                 int category, hostel;
                 name = uiName.getText().toString();//reads Name input, similarly other similar lines followed by this do the same for thier respective fields.
                 mobile = uiMobile.getText().toString();
+               
                 password = uiPassword.getText().toString();
+                if (!isValidPassword(password)) {
+					uiPassword.setError("Invalid Password");
+				}
                 email = uiEmail.getText().toString();
+                 if(!isValidEmail(email))
+                { uiEmail.setError("Invalid Email");
+                }
                 room = uiRoom.getText().toString();
                 category = spinner2.getSelectedItemPosition();
                 hostel = spinner1.getSelectedItemPosition();
                 res=signuper(name,email,password,hostel,room,mobile,category);//stores output from server to res, see signuper function.
                 uiLog.setText(res);//shows out from the server(only if request is completed successfully)
+            
+               
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             }
         });
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -133,4 +159,25 @@ public class SignUp extends AppCompatActivity {
 
         });
     }
+
+        // validating email id
+	private boolean isValidEmail(String email) {
+		String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
+
+	// validating password with retype password
+	private boolean isValidPassword(String password) {
+		if (password != null && password.length() > 8) {
+			return true;
+		}
+		return false;
+	}
+
+
+
 }
