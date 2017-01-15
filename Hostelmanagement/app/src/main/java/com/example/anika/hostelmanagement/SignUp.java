@@ -80,7 +80,7 @@ public class SignUp extends AppCompatActivity {
 
         return response;
     }
-    protected  String signuper (String name, String email, String password, int hostel, int category){
+    protected  String signuper (String name, String email, String password, int hostel,String room, String mobile, int category){
         return signuper(name,email,password,hostel,"0","0", category);
     }
     @Override
