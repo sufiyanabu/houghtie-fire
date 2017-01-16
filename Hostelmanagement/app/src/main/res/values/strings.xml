@@ -14,5 +14,6 @@
         <item>Caretaker</item>
         <item>Staff</item>
     </string-array>
-    <string name="signupUrl">http://localhost/projects/hostel-app-api/register.py</string> <!-- stores servers address. -->
+    <string name="loginUrl">https://api.mayukh.me/hostel-api/login.py</string>
+    <string name="signupUrl">https://api.mayukh.me/hostel-api/register.py</string> <!-- stores servers address. -->
 </resources>
